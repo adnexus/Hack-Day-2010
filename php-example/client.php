@@ -4,6 +4,7 @@ class DW
 {
 	private $baseUrl;
 	private $token;
+	private $nz = null;
 
 	public function __construct($baseUrl)
 	{
@@ -79,4 +80,25 @@ class DW
 			throw new Exception('Request failed');                                     
 		}                                                                            
 	}
+
+	private function nz_connect_db() {                      
+		/* Connect to Netezza using the passed identity.  Set the global $nz var. */   
+		putenv("LD_LIBRARY_PATH=" . "/usr/local/lib:/usr/local/nz/lib");               
+		$this->nz =  new PDO("odbc:NZSQL") or die("yikes\n");                            
+		$this->nz->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);                            
+		return true;                                                                   
+	}                                                                                
+																																									 
+	public function nz_fetch_query_assoc($q) {                                
+		/* Return the result of a NZ query as a numerically indexed array. */          
+		if (is_null($this->nz)) {
+			$this->nz_connect_db();
+		}
+		$result = $this->nz->query($q) or die("error issuing query\n$q\n" . $this->nz->error);     
+		$data = array();                                                               
+		while($row = $result->fetch(PDO::FETCH_ASSOC)) {                               
+			$data[] = $row;                                                              
+		}                                                                              
+		return $data;                                                                  
+	}  
 }
