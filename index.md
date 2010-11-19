@@ -176,6 +176,18 @@ $dw->delete('/advertiser?id=292');
 
 [#](http://webdev.adnxs.net/~tjohnson/Hack-Day-2010/php-example/example.php?endpoint=/advertiser?id=3)
 
+!SLIDE
+
+# Let's try this all out
+
+* ssh you@jump.adnxs.net
+* ssh 01.general.dev.nym1
+* cd public_html
+* cp /tmp/hack-day-2010.tar.gz .
+* tar -zxvf hack-day-2010.tar.gz
+* cd Hack-Day-2010
+* [http://webdev.adnxs.net/~YOU/Hack-Day-2010/php-example/example.php](http://webdev.adnxs.net/~tjohnson/Hack-Day-2010/php-example/example.php)
+
 !SLIDE 
 
 # Questions?
