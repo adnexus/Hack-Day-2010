@@ -95,8 +95,6 @@ $ curl -b c -c c -X DELETE 'http://hb.sand-08.adnxs.net/advertiser?id=3344'
 
 !SLIDE
 
-## RTFM
-
 [The DisplayWords API Documentation Wiki](http://wiki.appnexus.com/display/dwapi/Home)
 
 !SLIDE
